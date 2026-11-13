@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: station-frontend
+  namespace: station-service
+  labels:
+    app: station-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: station-frontend
+  template:
+    metadata:
+      labels:
+        app: station-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: station-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              name: http
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "256Mi"
+              cpu: "300m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: station-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      name: http
+  selector:
+    app: station-frontend

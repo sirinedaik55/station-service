@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: station-service
+  labels:
+    app.kubernetes.io/name: station-service
+    environment: production
