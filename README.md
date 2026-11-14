@@ -1,6 +1,6 @@
 # ⛽ PETROFLOW 360 - Enterprise Multi-Network Station-Service OS & ERP
 
-[![CI/CD Pipeline](https://github.com/username/station-service/actions/workflows/ci.yml/badge.svg)](https://github.com/username/station-service/actions)
+[![CI/CD Pipeline](https://github.com/sirinedaik55/station-service/actions/workflows/ci.yml/badge.svg)](https://github.com/sirinedaik55/station-service/actions)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.3-6DB33F?logo=springboot&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-21_LTS-ED8B00?logo=openjdk&logoColor=white)
 ![Angular](https://img.shields.io/badge/Angular-18-DD0031?logo=angular&logoColor=white)
@@ -124,7 +124,7 @@ Le projet intègre un orchestrateur **Docker Compose** prêt pour la production.
 ### Lancement de l'écosystème complet
 ```bash
 # Cloner le projet
-git clone https://github.com/sirinedaik55/station-service
+git clone https://github.com/sirinedaik55/station-service.git
 cd station-service
 
 # Lancer PostgreSQL 17, Redis 7, RabbitMQ, Spring Boot API, Angular Frontend, Prometheus et Grafana

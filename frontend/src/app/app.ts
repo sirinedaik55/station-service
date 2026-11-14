@@ -817,6 +817,38 @@ export class App implements OnInit {
     });
   }
 
+  // --- Démo Simulation Action ---
+  chargerQuartExemple() {
+    const map = new Map(this.saisieInputs());
+    const deltas = [420, 290, 180, 510, 390, 240, 150];
+    this.pistolets().forEach((p, idx) => {
+      const simulatedLiters = deltas[idx % deltas.length];
+      map.set(p.id, p.dernierIndex + simulatedLiters);
+    });
+    this.saisieInputs.set(map);
+
+    this.caKiosqueInput.set(185.500);
+    this.caLavageVidangeInput.set(65.000);
+
+    const totalTheorique = this.caTheoriqueJour() + 185.500 + 65.000;
+    const especes = Math.round(totalTheorique * 0.48);
+    const cartesTPE = Math.round(totalTheorique * 0.24);
+    const bonsFlotte = Math.round(totalTheorique * 0.18);
+    const cheques = Math.round(totalTheorique * 0.08);
+    const depenses = 15.000;
+    const creditsB2B = totalTheorique - (especes + cartesTPE + bonsFlotte + cheques - depenses);
+
+    this.especesPhysiqueInput.set(especes);
+    this.cartesAgilisInput.set(cartesTPE);
+    this.bonsAgilInput.set(bonsFlotte);
+    this.chequesInput.set(cheques);
+    this.creditsB2BInput.set(Number(creditsB2B.toFixed(3)));
+    this.depensesPisteInput.set(depenses);
+    this.clotureObservations.set('Quart A matin : affluence soutenue sur piste, tickets TPE agrafés, aucun litige.');
+
+    this.notify('Quart de démonstration chargé avec succès ! Caisse et piste équilibrées.', 'success');
+  }
+
   // --- Jaugeage Actions ---
   ouvrirJaugeage(cuve: Citerne) {
     this.selectedCuveToJauge.set(cuve);
